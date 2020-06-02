@@ -43,6 +43,9 @@ public class User implements Serializable {
     @Column(name = "email", nullable = true)
     private String email;
 
+    @Column(name = "salt", nullable = true)
+    private String salt;
+
     @Column(name = "avatar", nullable = true)
     private String avatar;
 
@@ -92,7 +95,7 @@ public class User implements Serializable {
 
     }
 
-    public User(@NotEmpty String username, @NotEmpty String password, Set<Role> roles, String firstName, String lastName, String fullName, String email, String avatar, String location, String phone, Date birthDay, String gender, String facebook, String github, String skype, String role, Boolean isAdmin, Boolean status, Boolean statusLogin, Date lastLogon, Date createdAt, Date updatedAt) {
+    public User(@NotEmpty String username, @NotEmpty String password, Set<Role> roles, String firstName, String lastName, String fullName, String email, String salt, String avatar, String location, String phone, Date birthDay, String gender, String facebook, String github, String skype, String role, Boolean isAdmin, Boolean status, Boolean statusLogin, Date lastLogon, Date createdAt, Date updatedAt) {
         this.username = username;
         this.password = password;
         this.roles = roles;
@@ -100,6 +103,7 @@ public class User implements Serializable {
         this.lastName = lastName;
         this.fullName = fullName;
         this.email = email;
+        this.salt = salt;
         this.avatar = avatar;
         this.location = location;
         this.phone = phone;
@@ -155,6 +159,14 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 
     public String getPhone() {
